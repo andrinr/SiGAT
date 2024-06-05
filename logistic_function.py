@@ -7,16 +7,8 @@
 """
 
 import os
-import sys
 import re
-import time
-import json
 import pickle
-import logging
-import math
-import random
-import argparse
-import subprocess
 import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -24,19 +16,10 @@ warnings.filterwarnings("ignore", category=DeprecationWarning)
 from collections import defaultdict
 
 import numpy as np
-import scipy as sp
 
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
 
-from tqdm import tqdm
-
-from sklearn import linear_model
+from sklearn.linear_model import LogisticRegression
 from sklearn import metrics
-from sklearn.pipeline import Pipeline
-from sklearn import svm
-from sklearn.preprocessing import Normalizer
 
 from common import DATASET_NUM_DIC
 from fea_extra import FeaExtra
@@ -98,7 +81,7 @@ def common_logistic(dataset, k, embeddings, model):
         test_X1.append(np.concatenate([embeddings[i], embeddings[j]]))
 
 
-    logistic_function = linear_model.LogisticRegression()
+    logistic_function = LogisticRegression()
     logistic_function.fit(train_X1, train_y)
     pred = logistic_function.predict(test_X1)
     pred_p = logistic_function.predict_proba(test_X1)

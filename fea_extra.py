@@ -5,33 +5,8 @@
 @file: fea_extra.py
 @time: 2018/12/10
 """
-import os
-import sys
-import re
-import time
-import json
-import pickle
-import logging
-import math
-import random
-import argparse
-import subprocess
 
 from collections import defaultdict
-
-import numpy as np
-import scipy as sp
-
-import torch
-import torch.nn as nn
-import torch.nn.functional as F
-
-from tqdm import tqdm
-
-from sklearn import linear_model
-from sklearn import metrics
-
-from common import DATASET_NUM_DIC
 
 
 class FeaExtra(object):
